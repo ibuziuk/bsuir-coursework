@@ -5,16 +5,30 @@
 <head>
     <title>BSUIR coursework</title>
 </head>
+<style>
+.error {
+	color: #ff0000;
+}
+ 
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+</style>
 <body>
  
 <h2><spring:message code="label.title"/></h2>
  
 <form:form method="post" action="add" commandName="project">
- 
+ 	<form:errors path="*" cssClass="errorblock" element="div" />
     <table>
     <tr>
         <td><form:label path="name"><spring:message code="label.name"/></form:label></td>
         <td><form:input path="name" /></td> 
+        <td><form:errors path="name" cssClass="error" /></td>
     </tr>
     <tr>
         <td><form:label path="details"><spring:message code="label.details"/></form:label></td>
