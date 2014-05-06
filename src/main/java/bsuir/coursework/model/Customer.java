@@ -8,16 +8,14 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "projects")
-public class Project {
+@Table(name = "customer")
+public class Customer {
 	@Id
 	@GeneratedValue
 	private Integer id;
 	
 	@NotEmpty
 	private String name;
-
-	private String details;
 
 	public Integer getId() {
 		return id;
@@ -33,13 +31,5 @@ public class Project {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
 	}
 }

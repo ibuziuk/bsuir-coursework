@@ -9,7 +9,7 @@
  
 <h2><spring:message code="label.title"/></h2>
  
-<form:form method="post" action="add.html" commandName="project">
+<form:form method="post" action="add" commandName="project">
  
     <table>
     <tr>
