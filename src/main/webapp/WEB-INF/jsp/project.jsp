@@ -35,6 +35,15 @@
         <td><form:input path="details" /></td>
     </tr>
     <tr>
+        <td><form:label path="customer"><spring:message code="label.customer"/></form:label></td>
+        <td>
+        	<form:select path="customer.id" commandName="customerId">
+   				<form:option value="" label="--- Select ---" />
+   				<form:options items="${customerList}" required="true" itemLabel="name" itemValue="id" />
+			</form:select>
+		</td>
+    </tr>
+    <tr>
         <td colspan="2">
             <input type="submit" value="<spring:message code="label.addProject"/>"/>
         </td>
@@ -49,12 +58,14 @@
 <tr>
     <th>Name</th>
     <th>Details</th>
+    <th>Customer</th>
     <th>&nbsp;</th>
 </tr>
 <c:forEach items="${projectList}" var="project">
     <tr>
         <td>${project.name}</td>
         <td>${project.details}</td>
+        <td>${project.customer.name}</td>
         <td><a href="delete/${project.id}">Delete</a></td>
     </tr>
 </c:forEach>
