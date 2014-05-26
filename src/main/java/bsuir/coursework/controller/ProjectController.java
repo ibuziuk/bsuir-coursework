@@ -41,8 +41,7 @@ public class ProjectController {
 			map.put("customerList", customerService.listCustomers());
 			return "project";
 		}
-		Integer customerid = project.getCustomer().getId();
-		projectService.addProject(project, customerid);
+		projectService.addProject(project);
 		return "redirect:/";
 	}
 	

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -57,7 +56,7 @@ public class Project {
 	public Customer getCustomer() {
 		return customer;
 	}
-
+	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}

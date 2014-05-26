@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import bsuir.coursework.dao.CustomerDAO;
 import bsuir.coursework.dao.ProjectDAO;
-import bsuir.coursework.model.Customer;
 import bsuir.coursework.model.Project;
 
 @Service
@@ -21,9 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	@Transactional
-	public void addProject(Project project, Integer customerId) {
-		Customer customer = customerDAO.getCustomerById(customerId);
-		project.setCustomer(customer);
+	public void addProject(Project project) {
 		projectDAO.addProject(project);
 	}
 
