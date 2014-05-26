@@ -15,7 +15,22 @@
 	<context:component-scan base-package="bsuir.coursework" />
 	
 	<!-- support JSR303 annotation if JSR 303 validation present on classpath -->
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven validator="validator"/>
+	
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="messageInterpolator">
+			<bean
+				class="org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator">
+				<constructor-arg index="0">
+					<bean
+						class="org.springframework.validation.beanvalidation.MessageSourceResourceBundleLocator">
+						<constructor-arg index="0" ref="messageSource" />
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
 	
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -60,6 +75,5 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
-
+	
 </beans>

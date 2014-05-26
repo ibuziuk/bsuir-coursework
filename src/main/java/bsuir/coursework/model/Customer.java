@@ -20,7 +20,7 @@ public class Customer {
 	
 	@NotEmpty
 	private String name;
-	
+
     @OneToMany(mappedBy="customer")
     private Set<Project> projects;
 

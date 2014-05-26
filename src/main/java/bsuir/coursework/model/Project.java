@@ -7,8 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import bsuir.coursework.validator.CustomerCheck;
 
 @Entity
 @Table(name = "project")
@@ -22,6 +25,7 @@ public class Project {
 
 	private String details;
 	
+	@CustomerCheck
 	@ManyToOne
 	@JoinColumn(name="id", insertable = false, updatable = false)	
 	private Customer customer;

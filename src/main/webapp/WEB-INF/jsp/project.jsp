@@ -42,6 +42,7 @@
    				<form:options items="${customerList}" required="true" itemLabel="name" itemValue="id" />
 			</form:select>
 		</td>
+		<td><form:errors path="customer" cssClass="error" /></td>
     </tr>
     <tr>
         <td colspan="2">
