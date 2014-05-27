@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -57,6 +58,7 @@
       
 <c:choose>
 	<c:when test="${!empty projectList}">
+		<hr class="divider">
 		<h3>Our Projects</h3>
 		<table class="table table-striped table-bordered table-condensed" >
 		<tr>

@@ -40,7 +40,8 @@
 </form:form>
 
 <c:choose>
-  <c:when test="${!empty customerList}">   
+  	<c:when test="${!empty customerList}">
+  		<hr class="divider">   
 		<h3>Our Customers</h3>
 		<table class="table table-striped table-bordered table-condensed" > 
 		<tr>
@@ -54,10 +55,10 @@
 		   </tr>
 		</c:forEach>
 		</table>
-</c:when>
-  <c:otherwise>
+	</c:when>
+  	<c:otherwise>
   		<h3>We have no customers yet</h3>	
-  </c:otherwise>
+  	</c:otherwise>
 </c:choose>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </body>

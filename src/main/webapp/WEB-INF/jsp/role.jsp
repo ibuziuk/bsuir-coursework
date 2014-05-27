@@ -42,9 +42,10 @@
 </table>  
     <input type="submit" class="btn btn-success btn-large" value="<spring:message code="label.addRole"/>"/>
 </form:form>
- 
+
 <c:choose>
   <c:when test="${!empty roleList}">
+  		<hr class="divider">
   		<h3>Our Roles</h3>
 		<table class="table table-striped table-bordered table-condensed">
 		<tr>
