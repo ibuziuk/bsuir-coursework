@@ -1,5 +1,6 @@
 package bsuir.coursework.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,8 @@ import bsuir.coursework.validator.CustomerCheck;
 public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	@Column(name = "project_id")  
+	private Integer projectId;
 	
 	@NotEmpty
 	private String name;
@@ -26,15 +28,15 @@ public class Project {
 	
 	@CustomerCheck
 	@ManyToOne
-	@JoinColumn(name="id", insertable = false, updatable = false)	
+	@JoinColumn(name="customer_id")	
 	private Customer customer;
 
 	public Integer getId() {
-		return id;
+		return projectId;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.projectId = id;
 	}
 
 	public String getName() {

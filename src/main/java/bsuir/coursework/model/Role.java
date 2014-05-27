@@ -1,5 +1,6 @@
 package bsuir.coursework.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,17 +14,18 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	@Column(name = "role_id")  
+	private Integer roleId;
 	
 	@NotEmpty
 	private String name;
 
 	public Integer getId() {
-		return id;
+		return roleId;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.roleId = id;
 	}
 
 	public String getName() {

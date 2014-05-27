@@ -2,6 +2,7 @@ package bsuir.coursework.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,20 +17,21 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	@Column(name = "customer_id")  
+	private Integer customerId;
 	
 	@NotEmpty
 	private String name;
 
-    @OneToMany(mappedBy="customer", orphanRemoval = true)
+    @OneToMany(mappedBy="customer")
     private Set<Project> projects;
 
 	public Integer getId() {
-		return id;
+		return customerId;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.customerId = id;
 	}
 
 	public String getName() {
