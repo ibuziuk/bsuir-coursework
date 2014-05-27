@@ -10,20 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/error.css"/>" rel="stylesheet">
 </head>
-<style>
-.error {
-	color: #ff0000;
-}
- 
-.errorblock {
-	color: #000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-</style>
 <body>
 
 <nav role="navigation" class="navbar navbar-default">
@@ -66,27 +54,31 @@
 </table>  
      <input type="submit" class="btn btn-success btn-large" value="<spring:message code="label.addProject"/>"/>
 </form:form>
- 
-     
-<h3>Projects</h3>
-<c:if  test="${!empty projectList}">
-<table class="data" class="table table-striped table-bordered table-condensed">
-<tr>
-    <th>Name</th>
-    <th>Details</th>
-    <th>Customer</th>
-    <th>&nbsp;</th>
-</tr>
-<c:forEach items="${projectList}" var="project">
-    <tr>
-        <td>${project.name}</td>
-        <td>${project.details}</td>
-        <td>${project.customer.name}</td>
-        <td><a href="delete/${project.id}">Delete</a></td>
-    </tr>
-</c:forEach>
-</table>
-</c:if>
+      
+<c:choose>
+	<c:when test="${!empty projectList}">
+		<h3>Our Projects</h3>
+		<table class="table table-striped table-bordered table-condensed" >
+		<tr>
+		    <th>Name</th>
+		    <th>Details</th>
+		    <th>Customer</th>
+		    <th>&nbsp;</th>
+		</tr>
+		<c:forEach items="${projectList}" var="project">
+		    <tr>
+		        <td>${project.name}</td>
+		        <td>${project.details}</td>
+		        <td>${project.customer.name}</td>
+		        <td><a href="delete/${project.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
+		    </tr>
+		</c:forEach>
+		</table>
+	</c:when>
+	  <c:otherwise>
+	  		<h3>We have no projects yet</h3>	
+	  </c:otherwise>
+</c:choose>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </body>
 </html>

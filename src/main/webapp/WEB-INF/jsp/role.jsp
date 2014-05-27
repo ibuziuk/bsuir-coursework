@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <s:url value="${controllerRequestMapping}" var="baseUrl"/>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Roles</title>
@@ -11,22 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/error.css"/>" rel="stylesheet">
 </head>
-
-<style>
-.error {
-	color: #ff0000;
-}
- 
-.errorblock {
-	color: #000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-</style>
-
 <body>
 
 <nav role="navigation" class="navbar navbar-default">
@@ -50,28 +37,32 @@
     <tr>
         <td><form:label path="name"><spring:message code="label.roleName"/></form:label></td>
         <td><form:input path="name" /></td> 
-        <td><form:errors path="name" cssClass="error" /></td>
+        <td><form:errors path="name" cssClass="error"/></td>
     </tr>    
 </table>  
     <input type="submit" class="btn btn-success btn-large" value="<spring:message code="label.addRole"/>"/>
 </form:form>
  
-     
-<h3>Roles</h3>
-<c:if  test="${!empty roleList}">
-<table class="table table-striped table-bordered table-condensed">
-<tr>
-    <th>Role</th>
-    <th>&nbsp;</th>
-</tr>
-<c:forEach items="${roleList}" var="role">
-    <tr>
-        <td>${role.name}</td>
-        <td><a href="${baseUrl}/bsuir-coursework/role/remove/${role.id}">Delete</a></td>
-    </tr>
-</c:forEach>
-</table>
-</c:if>
+<c:choose>
+  <c:when test="${!empty roleList}">
+  		<h3>Our Roles</h3>
+		<table class="table table-striped table-bordered table-condensed">
+		<tr>
+		    <th>Role</th>
+		    <th>&nbsp;</th>
+		</tr>
+		<c:forEach items="${roleList}" var="role">
+		    <tr>
+		        <td>${role.name}</td>
+		        <td><a href="${baseUrl}/bsuir-coursework/role/remove/${role.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
+		    </tr>
+		</c:forEach>
+		</table>
+	</c:when>
+	  <c:otherwise>
+	  		<h3>We have no roles yet</h3>	
+	  </c:otherwise>
+</c:choose>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </body>
 </html>

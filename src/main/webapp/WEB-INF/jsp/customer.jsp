@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Customers</title>
@@ -9,22 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/css/error.css"/>" rel="stylesheet">
 </head>
-
-<style>
-.error {
-	color: #ff0000;
-}
- 
-.errorblock {
-	color: #000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-</style>
-
 <body>
 
 <nav role="navigation" class="navbar navbar-default">
@@ -63,7 +50,7 @@
 		<c:forEach items="${customerList}" var="customer">
 		   <tr>
 		       <td>${customer.name}</td>
-		       <td><a href="deleteCustomer/${customer.id}">Delete</a></td>
+		       <td><a href="deleteCustomer/${customer.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
 		   </tr>
 		</c:forEach>
 		</table>
