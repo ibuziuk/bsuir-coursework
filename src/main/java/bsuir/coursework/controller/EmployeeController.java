@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import bsuir.coursework.model.Employee;
 import bsuir.coursework.service.EmployeeService;
+import bsuir.coursework.service.ProjectService;
 import bsuir.coursework.service.RoleService;
 
 @Controller
@@ -31,9 +32,13 @@ public class EmployeeController {
 	@Autowired
 	RoleService roleService;
 	
+	@Autowired
+	ProjectService projectService;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String listRoles(Map<String, Object> map) {
 		map.put("employee", new Employee());
+		map.put("projectList", projectService.listProjects());
 		map.put("roleList", roleService.getRoles());
 		map.put("employeeList", employeeService.listEmployees());
 		return "employee";
@@ -43,6 +48,7 @@ public class EmployeeController {
 	public String addCustomer( @Valid @ModelAttribute("employee") Employee employee, BindingResult result, Map<String, Object> map) {
 		if (result.hasErrors()) {
 			map.put("roleList", roleService.getRoles());
+			map.put("projectList", projectService.listProjects());
 			map.put("employeeList", employeeService.listEmployees());
 			return "employee";
 		} 

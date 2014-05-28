@@ -49,6 +49,16 @@
         <td><form:errors path="birthday" cssClass="error" /></td>
     </tr>
     <tr>
+        <td><form:label path="project"><spring:message code="label.project"/></form:label></td>
+        <td>
+        	<form:select path="project.id" commandName="projectId">
+   				<form:option value="" label="--- Select ---" />
+   				<form:options items="${projectList}" required="true" itemLabel="name" itemValue="id" />
+			</form:select>
+		</td>
+		<td><form:errors path="project" cssClass="error" /></td>
+    </tr>
+    <tr>
         <td><form:label path="role"><spring:message code="label.employee.role"/></form:label></td>
         <td>
         	<form:select path="role.id" commandName="roleId">
@@ -71,6 +81,7 @@
 		    <th>Name</th>
 		    <th>Birthday</th>
 		    <th>Email</th>
+		    <th>Project</th>
 		    <th>Role</th>
 		    <th>&nbsp;</th>
 		</tr>
@@ -79,6 +90,7 @@
 		        <td>${employee.name}</td>
 	 	        <td>${employee.birthday}</td> 	
 	 	        <td>${employee.email}</td> 	
+		        <td>${employee.project.name}</td>
 		        <td>${employee.role.name}</td>
 		       	<td><a href="${baseUrl}/bsuir-coursework/employee/remove/${employee.employeeId}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
 		    </tr>

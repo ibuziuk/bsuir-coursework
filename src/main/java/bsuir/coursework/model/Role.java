@@ -2,6 +2,7 @@ package bsuir.coursework.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Role {
 	@NotEmpty
 	private String name;
 	
-    @OneToMany(mappedBy="role")
+    @OneToMany(mappedBy="role", cascade = CascadeType.REMOVE)
     private Set<Employee> employees;
 	
 	public Integer getId() {

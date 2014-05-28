@@ -1,5 +1,8 @@
 package bsuir.coursework.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -33,6 +37,9 @@ public class Project {
 	@ManyToOne
 	@JoinColumn(name="customer_id")	
 	private Customer customer;
+	
+    @OneToMany(mappedBy="project", cascade=CascadeType.REMOVE)
+    private Set<Employee> employees;
 
 	public Integer getId() {
 		return projectId;
@@ -64,5 +71,13 @@ public class Project {
 
 	public void setBudget(Integer budget) {
 		this.budget = budget;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 }

@@ -2,6 +2,7 @@ package bsuir.coursework.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Customer {
 	@NotEmpty
 	private String name;
 
-    @OneToMany(mappedBy="customer")
+    @OneToMany(mappedBy="customer", cascade=CascadeType.REMOVE)
     private Set<Project> projects;
 
 	public Integer getId() {
