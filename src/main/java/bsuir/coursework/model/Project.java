@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -23,8 +25,9 @@ public class Project {
 	
 	@NotEmpty
 	private String name;
-
-	private String details;
+	
+	@NotNull @Min(1000)
+	private Integer budget;
 	
 	@CustomerCheck
 	@ManyToOne
@@ -47,19 +50,19 @@ public class Project {
 		this.name = name;
 	}
 
-	public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
 	public Customer getCustomer() {
 		return customer;
 	}
 	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public Integer getBudget() {
+		return budget;
+	}
+
+	public void setBudget(Integer budget) {
+		this.budget = budget;
 	}
 }

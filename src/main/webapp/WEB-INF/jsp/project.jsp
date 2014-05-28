@@ -22,7 +22,6 @@
             <li class="active"><a href="/bsuir-coursework/">Projects</a></li>
             <li><a href="/bsuir-coursework/customer">Customers</a></li>
             <li><a href="#">Employees</a></li>
-            <li><a href="#">Teams</a></li>
             <li><a href="/bsuir-coursework/role">Roles</a></li>
         </ul>
     </div>
@@ -39,8 +38,9 @@
         <td><form:errors path="name" cssClass="error" /></td>
     </tr>
     <tr>
-        <td><form:label path="details"><spring:message code="label.details"/></form:label></td>
-        <td><form:input path="details" /></td>
+        <td><form:label path="budget"><spring:message code="label.budget"/></form:label></td>
+        <td><form:input path="budget" /></td>
+        <td><form:errors path="budget" cssClass="error" /></td>
     </tr>
     <tr>
         <td><form:label path="customer"><spring:message code="label.customer"/></form:label></td>
@@ -63,14 +63,14 @@
 		<table class="table table-striped table-bordered table-condensed" >
 		<tr>
 		    <th>Name</th>
-		    <th>Details</th>
+		    <th>Budget</th>
 		    <th>Customer</th>
 		    <th>&nbsp;</th>
 		</tr>
 		<c:forEach items="${projectList}" var="project">
 		    <tr>
 		        <td>${project.name}</td>
-		        <td>${project.details}</td>
+		        <td>${project.budget}</td>
 		        <td>${project.customer.name}</td>
 		        <td><a href="delete/${project.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
 		    </tr>

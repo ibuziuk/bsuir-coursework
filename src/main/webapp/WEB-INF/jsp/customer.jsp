@@ -21,7 +21,6 @@
             <li><a href="/bsuir-coursework/">Projects</a></li>
             <li class="active"><a href="/bsuir-coursework/customer">Customers</a></li>
             <li><a href="#">Employees</a></li>
-            <li><a href="#">Teams</a></li>
             <li><a href="/bsuir-coursework/role">Roles</a></li>
         </ul>
     </div>
