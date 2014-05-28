@@ -20,11 +20,13 @@
         <ul class="nav navbar-nav">
             <li><a href="/bsuir-coursework/">Projects</a></li>
             <li class="active"><a href="/bsuir-coursework/customer">Customers</a></li>
-            <li><a href="#">Employees</a></li>
+ 			<li><a href="/bsuir-coursework/employee">Employees</a></li>
             <li><a href="/bsuir-coursework/role">Roles</a></li>
         </ul>
     </div>
 </nav>
+
+<h2>Customer</h2>
   
 <form:form method="post" action="addCustomer" commandName="customer">
  	<form:errors path="*" cssClass="errorblock" element="div" />

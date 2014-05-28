@@ -8,5 +8,6 @@
         <mapping class="bsuir.coursework.model.Project" />
         <mapping class="bsuir.coursework.model.Customer" />
         <mapping class="bsuir.coursework.model.Role" />
+        <mapping class="bsuir.coursework.model.Employee" />
     </session-factory>  
 </hibernate-configuration>

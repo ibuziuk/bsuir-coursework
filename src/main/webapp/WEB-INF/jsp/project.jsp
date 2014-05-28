@@ -21,7 +21,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="/bsuir-coursework/">Projects</a></li>
             <li><a href="/bsuir-coursework/customer">Customers</a></li>
-            <li><a href="#">Employees</a></li>
+            <li><a href="/bsuir-coursework/employee">Employees</a></li>
             <li><a href="/bsuir-coursework/role">Roles</a></li>
         </ul>
     </div>
@@ -39,7 +39,7 @@
     </tr>
     <tr>
         <td><form:label path="budget"><spring:message code="label.budget"/></form:label></td>
-        <td><form:input path="budget" /></td>
+        <td><form:input path="budget" type="number"/></td>
         <td><form:errors path="budget" cssClass="error" /></td>
     </tr>
     <tr>
@@ -63,7 +63,7 @@
 		<table class="table table-striped table-bordered table-condensed" >
 		<tr>
 		    <th>Name</th>
-		    <th>Budget</th>
+		    <th><spring:message code="label.budget"/></th>
 		    <th>Customer</th>
 		    <th>&nbsp;</th>
 		</tr>
@@ -82,5 +82,6 @@
 	  </c:otherwise>
 </c:choose>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
+	<title>BSUIR coursework</title>
 </body>
 </html>

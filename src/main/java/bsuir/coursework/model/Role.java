@@ -1,10 +1,13 @@
 package bsuir.coursework.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -19,7 +22,10 @@ public class Role {
 	
 	@NotEmpty
 	private String name;
-
+	
+    @OneToMany(mappedBy="role")
+    private Set<Employee> employees;
+	
 	public Integer getId() {
 		return roleId;
 	}
@@ -34,5 +40,13 @@ public class Role {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 }
