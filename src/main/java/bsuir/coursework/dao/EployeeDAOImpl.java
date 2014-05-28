@@ -33,4 +33,10 @@ public class EployeeDAOImpl implements EmployeeDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Employee> getUnassignedEmployees() {
+		return sessionFactory.getCurrentSession().createQuery("from Employee where project is null").list();
+	}
+
 }

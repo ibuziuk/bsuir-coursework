@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import bsuir.coursework.dao.EmployeeDAO;
 import bsuir.coursework.model.Employee;
+import bsuir.coursework.model.Project;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
@@ -19,6 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@Transactional
 	public void addEmployee(Employee employee) {
+		Project project = employee.getProject();
+		if (project.getId() == null) {
+			employee.setProject(null);
+		}
 		employeeDAO.addEmployee(employee);
 	}
 
@@ -32,6 +38,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional
 	public void removeEmployee(Integer id) {
 		employeeDAO.removeEmployee(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Employee> getUnassignedEmployees() {
+		return employeeDAO.getUnassignedEmployees();
 	}
 
 }

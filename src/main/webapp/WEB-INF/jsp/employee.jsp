@@ -70,7 +70,10 @@
     </tr>   
 </table>  
      <input type="submit" class="btn btn-success btn-large" value="<spring:message code="label.addEmployee"/>"/>
+     <a href="${baseUrl}/bsuir-coursework/employee/listUnassignedEmployees" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-user"></i> Show Unassigned Employees</a>
 </form:form>
+	
+	
       
 <c:choose>
 	<c:when test="${!empty employeeList}">
@@ -92,7 +95,7 @@
 	 	        <td>${employee.email}</td> 	
 		        <td>${employee.project.name}</td>
 		        <td>${employee.role.name}</td>
-		       	<td><a href="${baseUrl}/bsuir-coursework/employee/remove/${employee.employeeId}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
+		       	<td><a href="${baseUrl}/bsuir-coursework/employee/remove/${employee.employeeId}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
 		    </tr>
 		</c:forEach>
 		</table>

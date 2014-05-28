@@ -52,7 +52,7 @@
 		<c:forEach items="${customerList}" var="customer">
 		   <tr>
 		       <td>${customer.name}</td>
-		       <td><a href="deleteCustomer/${customer.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
+		       <td><a href="deleteCustomer/${customer.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
 		   </tr>
 		</c:forEach>
 		</table>

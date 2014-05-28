@@ -10,4 +10,6 @@ public interface EmployeeService {
 	List<Employee> listEmployees();
 
 	void removeEmployee(Integer id);
+	
+	List<Employee> getUnassignedEmployees();
 }

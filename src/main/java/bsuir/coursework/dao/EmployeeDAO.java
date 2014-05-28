@@ -6,6 +6,10 @@ import bsuir.coursework.model.Employee;
 
 public interface EmployeeDAO {
 	void addEmployee(Employee employee);
+
 	List<Employee> listEmployees();
+
 	void removeEmployee(Integer id);
+
+	List<Employee> getUnassignedEmployees();
 }

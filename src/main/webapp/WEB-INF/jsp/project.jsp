@@ -72,7 +72,7 @@
 		        <td>${project.name}</td>
 		        <td>${project.budget}</td>
 		        <td>${project.customer.name}</td>
-		        <td><a href="delete/${project.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i>Delete</a></td>
+		        <td><a href="delete/${project.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
 		    </tr>
 		</c:forEach>
 		</table>

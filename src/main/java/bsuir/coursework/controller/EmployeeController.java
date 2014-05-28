@@ -35,6 +35,12 @@ public class EmployeeController {
 	@Autowired
 	ProjectService projectService;
 	
+	@RequestMapping(value = "/listUnassignedEmployees", method = RequestMethod.GET)
+	public String listUnassignedEmployees(Map<String, Object> map) {
+		map.put("unassigedEmployees", employeeService.getUnassignedEmployees());
+		return "unassignedEmployee";
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String listRoles(Map<String, Object> map) {
 		map.put("employee", new Employee());

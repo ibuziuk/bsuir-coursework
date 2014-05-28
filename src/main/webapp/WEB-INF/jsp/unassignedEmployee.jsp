@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Roles</title>
+    <title>Unassigned Employees</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,44 +23,38 @@
             <li><a href="/bsuir-coursework/">Projects</a></li>
             <li><a href="/bsuir-coursework/customer">Customers</a></li>
             <li><a href="/bsuir-coursework/employee">Employees</a></li>
-            <li class="active"><a href="/bsuir-coursework/role">Roles</a></li>
+            <li><a href="/bsuir-coursework/role">Roles</a></li>
         </ul>
     </div>
 </nav>
- 
-<h2><spring:message code="label.role"/></h2>
- 
-<form:form method="post" action="${baseUrl}/bsuir-coursework/role/addRole" commandName="role">
- 	<form:errors path="*" cssClass="errorblock" element="div" />
-    <table class="table table-striped table-bordered table-condensed">
-    <tr>
-        <td><form:label path="name"><spring:message code="label.roleName"/></form:label></td>
-        <td><form:input path="name" /></td> 
-        <td><form:errors path="name" cssClass="error"/></td>
-    </tr>    
-</table>  
-    <input type="submit" class="btn btn-success btn-large" value="<spring:message code="label.addRole"/>"/>
-</form:form>
 
+<h2>Employee</h2>
+      
 <c:choose>
-  <c:when test="${!empty roleList}">
-  		<hr class="divider">
-  		<h3>Our Roles</h3>
-		<table class="table table-striped table-bordered table-condensed">
+	<c:when test="${!empty unassigedEmployees}">
+		<hr class="divider">
+		<h3>Unassigned Employees</h3>
+		<table class="table table-striped table-bordered table-condensed" >
 		<tr>
+		    <th>Name</th>
+		    <th>Birthday</th>
+		    <th>Email</th>
 		    <th>Role</th>
 		    <th>&nbsp;</th>
 		</tr>
-		<c:forEach items="${roleList}" var="role">
+		<c:forEach items="${unassigedEmployees}" var="employee">
 		    <tr>
-		        <td>${role.name}</td>
-		        <td><a href="${baseUrl}/bsuir-coursework/role/remove/${role.id}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
+		        <td>${employee.name}</td>
+	 	        <td>${employee.birthday}</td> 	
+	 	        <td>${employee.email}</td> 	
+		        <td>${employee.role.name}</td>
+		       	<td><a href="${baseUrl}/bsuir-coursework/employee/remove/${employee.employeeId}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i> Delete</a></td>
 		    </tr>
 		</c:forEach>
 		</table>
 	</c:when>
 	  <c:otherwise>
-	  		<h3>We have no roles yet</h3>	
+	  		<h3>We have no unassigned employees</h3>	
 	  </c:otherwise>
 </c:choose>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
