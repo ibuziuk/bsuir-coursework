@@ -39,4 +39,10 @@ public class EployeeDAOImpl implements EmployeeDAO {
 		return sessionFactory.getCurrentSession().createQuery("from Employee where project is null").list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Employee> getEmplyeesAssignedToProject(Integer projectId) {
+		return sessionFactory.getCurrentSession().createQuery("from Employee where project = :project").setInteger("project", projectId).list();
+	}
+
 }

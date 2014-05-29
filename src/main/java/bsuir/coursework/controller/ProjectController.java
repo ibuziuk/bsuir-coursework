@@ -1,7 +1,9 @@
 package bsuir.coursework.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.SSLEngineResult.Status;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,9 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
+import bsuir.coursework.model.Employee;
 import bsuir.coursework.model.Project;
 import bsuir.coursework.service.CustomerService;
+import bsuir.coursework.service.EmployeeService;
 import bsuir.coursework.service.ProjectService;
 
 @Controller
@@ -25,6 +30,9 @@ public class ProjectController {
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private EmployeeService employeeService;
 	
 	@RequestMapping("/")
 	public String listProjects(Map<String, Object> map) {
@@ -45,9 +53,39 @@ public class ProjectController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/editProject/{projectId}", method = RequestMethod.POST)
+	public String updateProject(@Valid @ModelAttribute("project") Project project, BindingResult result,
+			Map<String, Object> map, HttpSession session, SessionStatus status) {
+		if (result.hasErrors()) {
+			map.put("customerList", customerService.listCustomers());
+			return "editProject";
+		}
+		projectService.updateProject(project);
+		status.setComplete();
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/editProject/{projectId}", method = RequestMethod.GET)
+	public String updateProject(@PathVariable("projectId") Integer projectId, Map<String, Object> map) {
+		Project project = projectService.getProjectById(projectId);
+		map.put("project", project);
+		map.put("customerList", customerService.listCustomers());
+		return "editProject";
+	}
+	
+	
 	@RequestMapping("/delete/{projectId}")
 	public String deleteProject(@PathVariable("projectId") Integer projectId) {
 		projectService.removeProject(projectId);
 		return "redirect:/";
+	}
+		
+	@RequestMapping("/getTeam/{projectId}")
+	public String getTeam(@PathVariable("projectId") Integer projectId, Map<String, Object> map) {
+		Project project = projectService.getProjectById(projectId);
+		List<Employee> emplyeesAssignedToProject = employeeService.getEmplyeesAssignedToProject(projectId);
+		map.put("team", emplyeesAssignedToProject);
+		map.put("project", project);
+		return "team";
 	}
 }

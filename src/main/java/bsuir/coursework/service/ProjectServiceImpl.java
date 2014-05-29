@@ -32,4 +32,16 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDAO.removeProject(id);
 	}
 
+	@Override
+	@Transactional
+	public Project getProjectById(Integer id) {
+		return projectDAO.getProjectById(id);
+	}
+
+	@Override
+	@Transactional
+	public void updateProject(Project project) {
+		projectDAO.updateProject(project);
+	}
+
 }

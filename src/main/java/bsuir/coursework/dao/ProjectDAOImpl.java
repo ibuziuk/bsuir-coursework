@@ -32,4 +32,18 @@ public class ProjectDAOImpl implements ProjectDAO {
 		 }
 	}
 
+	@Override
+	public Project getProjectById(Integer id) {
+		return (Project) sessionFactory.getCurrentSession().get(Project.class, id);
+	}
+
+	@Override
+	public void updateProject(Project project) {
+		Project projectToUpdate = getProjectById(project.getId());
+		projectToUpdate.setName(project.getName());
+		projectToUpdate.setBudget(project.getBudget());
+		projectToUpdate.setCustomer(project.getCustomer());
+		sessionFactory.getCurrentSession().merge(projectToUpdate);
+	}
+
 }

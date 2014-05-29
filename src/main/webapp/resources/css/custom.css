@@ -1,0 +1,8 @@
+.fixed-width {
+    width: 120px !important;
+}
+
+.center {
+	margin:auto;
+	width:50%;
+}

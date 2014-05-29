@@ -46,4 +46,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.getUnassignedEmployees();
 	}
 
+	@Override
+	@Transactional
+	public List<Employee> getEmplyeesAssignedToProject(Integer projectId) {
+		return employeeDAO.getEmplyeesAssignedToProject(projectId);
+	}
+
 }

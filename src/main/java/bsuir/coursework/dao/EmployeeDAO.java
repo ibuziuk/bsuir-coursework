@@ -12,4 +12,6 @@ public interface EmployeeDAO {
 	void removeEmployee(Integer id);
 
 	List<Employee> getUnassignedEmployees();
+	
+	List<Employee> getEmplyeesAssignedToProject(Integer projectId);
 }
