@@ -79,6 +79,12 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -140,7 +146,7 @@
 			<version>1.9.5</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>bsuir-coursework</finalName>
 		<plugins>

@@ -9,8 +9,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/css/error.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/error.css"/>" rel="stylesheet">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
     <!-- Collection of nav links and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li><a href="/bsuir-coursework/">Projects</a></li>
+            <li><a href="/bsuir-coursework/project">Projects</a></li>
             <li class="active"><a href="/bsuir-coursework/customer">Customers</a></li>
  			<li><a href="/bsuir-coursework/employee">Employees</a></li>
             <li><a href="/bsuir-coursework/role">Roles</a></li>
@@ -61,6 +61,6 @@
   		<h3>We have no customers yet</h3>	
   	</c:otherwise>
 </c:choose>
-<script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
 </body>
 </html>

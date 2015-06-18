@@ -22,6 +22,7 @@ import bsuir.coursework.service.EmployeeService;
 import bsuir.coursework.service.ProjectService;
 
 @Controller
+@RequestMapping("/project")
 public class ProjectController {
 	
 	@Autowired
@@ -33,7 +34,7 @@ public class ProjectController {
 	@Autowired
 	private EmployeeService employeeService;
 	
-	@RequestMapping("/")
+	@RequestMapping(method = RequestMethod.GET)
 	public String listProjects(Map<String, Object> map) {
 		map.put("project", new Project());
 		map.put("customerList", customerService.listCustomers());
@@ -49,10 +50,10 @@ public class ProjectController {
 			return "project";
 		}
 		projectService.addProject(project);
-		return "redirect:/";
+		return "redirect:/project";
 	}
 	
-	@RequestMapping(value = "/editProject/{projectId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit/{projectId}", method = RequestMethod.POST)
 	public String updateProject(@Valid @ModelAttribute("project") Project project, BindingResult result,
 			Map<String, Object> map, HttpSession session, SessionStatus status) {
 		if (result.hasErrors()) {
@@ -61,10 +62,10 @@ public class ProjectController {
 		}
 		projectService.updateProject(project);
 		status.setComplete();
-		return "redirect:/";
+		return "redirect:/project";
 	}
 	
-	@RequestMapping(value = "/editProject/{projectId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{projectId}", method = RequestMethod.GET)
 	public String updateProject(@PathVariable("projectId") Integer projectId, Map<String, Object> map) {
 		Project project = projectService.getProjectById(projectId);
 		map.put("project", project);
@@ -76,7 +77,7 @@ public class ProjectController {
 	@RequestMapping("/delete/{projectId}")
 	public String deleteProject(@PathVariable("projectId") Integer projectId) {
 		projectService.removeProject(projectId);
-		return "redirect:/";
+		return "redirect:/project";
 	}
 		
 	@RequestMapping("/getTeam/{projectId}")

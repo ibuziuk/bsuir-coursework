@@ -3,9 +3,6 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>BSUIR coursework</display-name>
-	<welcome-file-list>
-		<welcome-file></welcome-file>
-	</welcome-file-list>
 	<servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>

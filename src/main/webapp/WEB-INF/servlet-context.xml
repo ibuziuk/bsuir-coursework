@@ -32,8 +32,8 @@
 		</property>
 	</bean>
 	
-	<mvc:resources mapping="/bootstrap/**" location="/resources/bootstrap/" />
-	<mvc:resources mapping="/css/**" location="/resources/css/" />
+	<mvc:resources mapping="/resources/bootstrap/**" location="/resources/bootstrap/" />
+	<mvc:resources mapping="/resources/css/**" location="/resources/css/" />
 		
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
