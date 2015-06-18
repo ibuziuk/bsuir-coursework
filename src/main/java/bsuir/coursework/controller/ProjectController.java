@@ -3,7 +3,6 @@ package bsuir.coursework.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.net.ssl.SSLEngineResult.Status;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 

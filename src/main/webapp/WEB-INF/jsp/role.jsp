@@ -25,6 +25,10 @@
             <li><a href="/bsuir-coursework/employee">Employees</a></li>
             <li class="active"><a href="/bsuir-coursework/role">Roles</a></li>
         </ul>
+        
+       <form action = "logout" method = "post">
+        	<input type="submit" name="upvote" value="Logout" />
+   	   </form>
     </div>
 </nav>
  
