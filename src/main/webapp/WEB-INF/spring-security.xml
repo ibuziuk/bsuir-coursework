@@ -6,7 +6,7 @@
 		   http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http use-expressions="true">
-		<intercept-url pattern="/resources/**" access="hasRole('USER')"/>
+		<intercept-url pattern="/resources/**" access="hasRole('USER')" />
 		<intercept-url pattern="/project**" access="hasRole('USER')" />
 		<intercept-url pattern="/**" access="hasRole('ADMIN')" />
 		<form-login always-use-default-target="true"
@@ -14,14 +14,11 @@
 		<logout />
 		<csrf disabled="true" />
 	</http>
-	
+
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="login" password="password" authorities="ROLE_USER" />
-				<user name="log" password="pas" authorities="ROLE_USER, ROLE_ADMIN" />
-			</user-service>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder hash="bcrypt" />
 		</authentication-provider>
 	</authentication-manager>
-
+	
 </beans:beans>
