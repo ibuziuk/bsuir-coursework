@@ -29,7 +29,7 @@ public class RoleController {
 		return "role";
 	}
 	
-	@RequestMapping(value = "/addRole", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addCustomer( @Valid @ModelAttribute("role") Role role, BindingResult result, Map<String, Object> map) {
 		if (result.hasErrors()) {
 			map.put("roleList", roleService.getRoles());
@@ -39,7 +39,7 @@ public class RoleController {
 		return "redirect:/role";
 	}
 
-	@RequestMapping("remove/{roleId}")
+	@RequestMapping("delete/{roleId}")
 	public String deleteProject(@PathVariable("roleId") Integer roleId) {
 		roleService.removeRole(roleId);
 		return "redirect:/role";

@@ -33,8 +33,9 @@ public class Project {
 	@NotNull @Min(1000)
 	private Integer budget;
 	
-	@CustomerCheck
+	@NotNull
 	@ManyToOne
+	@CustomerCheck
 	@JoinColumn(name="customer_id")	
 	private Customer customer;
 	

@@ -42,7 +42,7 @@ public class ProjectController {
 		return "project";
 	}
 	
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String addProject(@Valid @ModelAttribute("project") Project project, BindingResult result, Map<String, Object> map, HttpSession session) {
 		if (result.hasErrors()) {
 			map.put("projectList", projectService.listProjects());

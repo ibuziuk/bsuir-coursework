@@ -16,18 +16,19 @@ import bsuir.coursework.model.Customer;
 import bsuir.coursework.service.CustomerService;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	@RequestMapping("/customer")
+	@RequestMapping(method = RequestMethod.GET)
 	public String listCustomers(Map<String, Object> map) {
 		map.put("customer", new Customer());
 		map.put("customerList", customerService.listCustomers());
 		return "customer";
 	}
 
-	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public String addCustomer( @Valid @ModelAttribute("customer") Customer customer, BindingResult result, Map<String, Object> map) {
 		if (result.hasErrors()) {
 			map.put("customerList", customerService.listCustomers());
@@ -37,7 +38,7 @@ public class CustomerController {
 		return "redirect:/customer";
 	}
 
-	@RequestMapping("/deleteCustomer/{customerId}")
+	@RequestMapping(value = "/{customerId}")
 	public String deleteProject(@PathVariable("customerId") Integer customerId) {
 		customerService.removeCustomer(customerId);
 		return "redirect:/customer";

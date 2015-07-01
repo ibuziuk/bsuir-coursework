@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head data-th-fragment="header">
+	<title data-th-text="#{role.page.title}"></title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link type="text/css" rel="stylesheet" data-th-href="@{/resources/bootstrap/css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" data-th-href="@{/resources/css/error.css}" />
+	<link type="text/css" rel="stylesheet" data-th-href="@{/resources/css/custom.css}" />
+</head>
+<body>
+
+<nav role="navigation" class="navbar navbar-default">
+    <!-- Collection of nav links and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/bsuir-coursework/project" class="glyphicon glyphicon-th"> Projects</a></li>
+				<li><a href="/bsuir-coursework/customer" class="glyphicon glyphicon-briefcase"> Customers</a></li>
+				<li><a href="/bsuir-coursework/employee" class="glyphicon glyphicon-user"> Employees</a></li>
+				<li class="active"><a href="/bsuir-coursework/role" class="glyphicon glyphicon-eye-close"> Roles</a></li>
+			</ul>
+    </div>
+</nav>
+
+<h2 data-th-text="#{role.page.logo}"></h2>
+
+<div th:errors="${role.*}" th:errorclass="errorblock"></div>
+<form method="post" th:action="@{/role/add}" th:object="${role}">
+    <table class="table table-striped table-bordered table-condensed">
+    	<tr>
+		     <td th:text="#{label.role.name}"></td>
+		     <td><input type="text" th:field="*{name}" autofocus="autofocus"/></td> 
+    	</tr>
+	</table>  
+    <input type="submit" class="btn btn-success btn-large"  th:value="#{label.addRole}"/>
+</form>
+
+<div th:switch="${roleList.isEmpty()}">
+  <div th:case="${true}">
+  	<h3>There is no Roles yet</h3>
+  </div>
+  <div th:case="${false}">
+  	<h3>Our Roles</h3>
+  		<table class="table table-striped table-bordered table-condensed" > 
+		<tr>
+		    <th>Name</th>
+		    <th>&nbsp;</th>
+		</tr>
+		<tr th:each="role : ${roleList}">
+		    <td th:text="${role.name}"></td>
+		    <td><a th:href="@{/role/delete/{id}(id=${role.id})}" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-remove"></i> Delete </a></td>
+		</tr>
+		</table>
+  </div>
+</div>
+
+</body>
+</html>

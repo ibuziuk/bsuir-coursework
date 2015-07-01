@@ -35,7 +35,7 @@ public class EmployeeController {
 	@Autowired
 	ProjectService projectService;
 	
-	@RequestMapping(value = "/listUnassignedEmployees", method = RequestMethod.GET)
+	@RequestMapping(value = "/unassigned", method = RequestMethod.GET)
 	public String listUnassignedEmployees(Map<String, Object> map) {
 		map.put("unassigedEmployees", employeeService.getUnassignedEmployees());
 		return "unassignedEmployee";
@@ -50,7 +50,7 @@ public class EmployeeController {
 		return "employee";
 	}
 	
-	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addCustomer( @Valid @ModelAttribute("employee") Employee employee, BindingResult result, Map<String, Object> map) {
 		if (result.hasErrors()) {
 			map.put("roleList", roleService.getRoles());
@@ -62,7 +62,7 @@ public class EmployeeController {
 		return "redirect:/employee";
 	}
 
-	@RequestMapping("remove/{employeeId}")
+	@RequestMapping("/remove/{employeeId}")
 	public String deleteProject(@PathVariable("employeeId") Integer employeeId) {
 		employeeService.removeEmployee(employeeId);
 		return "redirect:/employee";
