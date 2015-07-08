@@ -34,14 +34,12 @@
 		    	<th>Name</th>
 			    <th>Birthday</th>
 			    <th>Email</th>
-			    <th>Project</th>
 			    <th>Role</th>
 			</tr>
 			<tr th:each="employee : ${unassigedEmployees}">
 			    <td th:text="${employee.name}"></td>
 			    <td th:text="${employee.birthday}"></td>
 			    <td th:text="${employee.email}"></td>
-			    <td th:text="${employee.project != null} ? ${employee.project.name}"></td>
 			    <td th:text="${employee.role.name}"></td>
 			</tr>
 		</table>
