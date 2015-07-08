@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<nav role="navigation" class="navbar navbar-default">
+<nav role="navigation" class="navbar navbar-inverse">
     <!-- Collection of nav links and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -23,25 +23,24 @@
     </div>
 </nav>
 
-<h2 data-th-text="#{employee.page.logo}"></h2>
 
 <div th:errors="${employee.*}" th:errorclass="errorblock"></div>
 <form method="post" th:action="@{/employee/add}">
     <table class="table table-striped table-bordered table-condensed">
     	<tr>
-		     <td th:text="#{label.employee.name}"></td>
+		     <td>* <span th:text="#{label.employee.name}"></span></td>
 		     <td><input type="text" th:value="${employee.name}" required="required" name="name"/></td> 
     	</tr>
     	<tr>
-		     <td th:text="#{label.employee.email}"></td>
-		     <td><input type="email" th:value="${employee.email}" required="required" name="email"/></td> 
+		     <td>* <span th:text="#{label.employee.email}"></span></td>
+		     <td><input type="email" th:value="${employee.email}" required="required" name="email" placeholder="user@mydomain.com"/></td> 
     	</tr>
     	<tr>
-		     <td th:text="#{label.employee.birthday}"></td>
-		     <td><input type="date" th:value="${employee.birthday}" required="required" name="birthday"/></td> 
+		     <td>* <span th:text="#{label.employee.birthday}"></span></td>
+		     <td><input type="date" th:value="${employee.birthday}" required="required" name="birthday" placeholder="12/06/1990"/></td> 
     	</tr>
     	<tr>
-        	<td th:text="#{label.project}"></td>
+        	<td> <span th:text="#{label.project}"></span></td>
 	        <td>
 	        	<select name="project.id">
 		         		<option value=""> --- Select Project --- </option>
@@ -50,7 +49,7 @@
 			</td>
     	</tr>
     	<tr>
-    		<td th:text="#{label.role}"></td>
+    		<td>* <span th:text="#{label.role}"></span></td>
     		<td>
 	        	<select name="role.id" required="required">
 		         		<option value=""> --- Select Role --- </option>

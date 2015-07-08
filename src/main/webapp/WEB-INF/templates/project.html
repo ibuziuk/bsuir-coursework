@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default navbar-inverse">
+	<nav class="navbar navbar-inverse">
 		<!-- Collection of nav links and other content for toggling -->
 		<div id="navbarCollapse" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -22,26 +22,27 @@
 				<li><a href="/bsuir-coursework/employee" class="glyphicon glyphicon-user"> Employees</a></li>
 				<li><a href="/bsuir-coursework/role" class="glyphicon glyphicon-eye-close"> Roles</a></li>
 			</ul>
-			<p class="navbar-text navbar-right">Hello, <span sec:authentication="name"> </span></p>
-			<button type="button" class="btn btn-default navbar-btn navbar-righ">Sign out</button>
+			<ul class="nav navbar-nav navbar-right">
+					<li><p class="navbar-text">Hello, <span sec:authentication="name"></span></p></li>
+					<li><button type="button" class="btn btn-default navbar-btn">Sign out</button></li>
+			</ul>
 		</div>
 	</nav>	
 	
-	<h2 data-th-text="#{project.page.title}"></h2>
 <div sec:authorize="hasRole('ROLE_ADMIN')">
 <div th:errors="${project.*}" th:errorclass="errorblock"></div>
 	<form method="post" th:action="@{project}">
     <table class="table table-striped table-bordered table-condensed">
     <tr>
-        <td th:text="#{label.name}"></td>
+        <td>* <span th:text="#{label.name}"></span></td>
         <td><input type="text" th:value="${project.name}" name="name"/></td> 
     </tr>
     <tr>
-    	<td th:text="#{label.budget}"></td>
-    	<td><input type="number" th:value="${project.budget}" name="budget"/></td> 
+    	<td>* <span th:text="#{label.budget}"></span></td>
+    	<td><input type="number" th:value="${project.budget}" name="budget" placeholder="10000"/></td> 
     </tr>
     <tr>
-        <td th:text="#{label.customer}"></td>
+        <td>* <span th:text="#{label.customer}"></span></td>
         <td>
         	<select name="customer.id" required="required">
 	         		<option value=""> --- Select Customer --- </option>
