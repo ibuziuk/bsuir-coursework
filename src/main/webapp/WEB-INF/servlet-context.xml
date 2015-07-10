@@ -59,7 +59,7 @@
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="WEB-INF/classes/messages" />
+		<property name="basename" value="WEB-INF/messages" />
 	</bean>
 
 	<bean id="propertyConfigurer"
@@ -74,7 +74,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="configLocation">
-			<value>classpath:hibernate.cfg.xml</value>
+			<value>WEB-INF/hibernate.cfg.xml</value>
 		</property>
 		<property name="hibernateProperties">
 			<props>
