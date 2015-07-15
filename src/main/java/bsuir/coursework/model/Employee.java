@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Past;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -39,6 +40,7 @@ public class Employee {
 	
 	@ManyToOne
 	@JoinColumn(name = "role_id")
+	@JsonIgnore
 	private Role role;
 
 	public String getName() {

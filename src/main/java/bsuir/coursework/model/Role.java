@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -24,6 +25,7 @@ public class Role {
 	@NotEmpty
 	private String name;
 	
+	@JsonIgnore
     @OneToMany(mappedBy="role", cascade = CascadeType.REMOVE)
     private Set<Employee> employees;
 	
